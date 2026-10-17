@@ -1,0 +1,8 @@
+# Files excluded from the Vercel deployment upload.
+# NOTE: scripts/ must NOT be listed here — the build command runs
+# scripts/compile_mcq_bank.py to generate assets/js/ebd-mcq-bank.js.
+# Everything the browser requests (index.html, assets/**) is kept.
+EBD_Learning_Platform_Vercel_Ready.zip
+README.md
+__pycache__
+*.pyc

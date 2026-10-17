@@ -8,6 +8,6 @@
     "build": "python3 scripts/compile_mcq_bank.py && node -c assets/js/ebd-sources.js && node -c assets/js/ebd-curriculum.js && node -c assets/js/ebd-mcq-bank.js && node -c assets/js/ebd-app.js && echo 'Build & validation passed successfully'"
   },
   "engines": {
-    "node": ">=18"
+    "node": "22.x"
   }
 }

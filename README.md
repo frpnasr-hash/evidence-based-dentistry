@@ -68,5 +68,5 @@ python3 -m http.server 3000
 ثم افتح المتصفح على `http://localhost:3000`.
 
 ### 2. النشر على Vercel
-- **عبر GitHub:** اربط مستودع `evidence-based-dentistry` بحسابك في Vercel واضغط **Deploy** (الإعدادات مضبوطة تلقائيًا عبر `vercel.json`).
+- **عبر GitHub:** اربط مستودع `evidence-based-dentistry` بحسابك في Vercel واضغط **Deploy** (الإعدادات مضبوطة تلقائيًا عبر `vercel.json`: أمر البناء `npm run build` يولّد `assets/js/ebd-mcq-bank.js`، ومجلد الإخراج هو جذر المشروع `"."` لأن `index.html` و`assets/` موجودان في الجذر — لا يوجد مجلد `public`/`dist`).
 - **أو عبر رفع حزمة ZIP:** فك ضغط حزمة `EBD_Learning_Platform_Vercel_Ready.zip` وارفع المجلد إلى Vercel أو عبر الأمر `npx vercel --prod`.
