@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EBD Learning Platform 🦷 | منصة طب الأسنان المبني على الدليل — أ.د. هديل فاروق</title>
+  <meta name="description" content="منصة تعليمية جامعية متكاملة لمادة Evidence-Based Dentistry (EBD) — تضم مكتبة المصادر الذكية، استوديو الفهم والمراجعة للمحاضرات الأربع، وبنك أسئلة جامعي يضم 500 سؤال MCQ من ملفات المنهج.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A6%B7%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/ebd-platform.css">
+</head>
+<body>
+
+  <!-- ══════════ TOP NAVIGATION BAR ══════════ -->
+  <header class="top-navbar">
+    <div class="nav-inner">
+      <div class="brand-logo" onclick="window.EBDApp.navigate('home')">
+        <span class="logo-badge">🦷</span>
+        <div>
+          <span>EBD Academic Platform</span>
+          <span class="brand-subtitle">Evidence-Based Dentistry · Prof. Hadeel Farouk</span>
+        </div>
+      </div>
+
+      <ul class="nav-links" id="main-nav-links">
+        <li><button class="nav-link active" data-route="home" onclick="window.EBDApp.navigate('home')">🏠 الرئيسية</button></li>
+        <li><button class="nav-link" data-route="course" onclick="window.EBDApp.navigate('course')">📘 المنهج والمحاضرات</button></li>
+        <li><button class="nav-link" data-route="studio" onclick="window.EBDApp.navigate('studio')">🔬 استوديو الفهم</button></li>
+        <li><button class="nav-link" data-route="library" onclick="window.EBDApp.navigate('library')">🎬 مكتبة المصادر</button></li>
+        <li><button class="nav-link" data-route="mcq" onclick="window.EBDApp.navigate('mcq')">🧠 بنك الأسئلة (500)</button></li>
+        <li><button class="nav-link" data-route="progress" onclick="window.EBDApp.navigate('progress')">📊 تقدمي ومحفوظاتي</button></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="search-trigger-btn" data-route="search" onclick="window.EBDApp.navigate('search')" title="البحث الشامل داخل المنصة">
+          <span>🔍</span>
+          <span>بحث شامل</span>
+        </button>
+        <button class="icon-btn" id="theme-toggle-btn" onclick="window.EBDApp.toggleTheme()" title="تبديل الوضع الليلي / النهاري" aria-label="Toggle theme">
+          🌙
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="القائمة">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════ SUB-HEADER: BREADCRUMBS & DIRECT LECTURE JUMP ══════════ -->
+  <div class="sub-header-bar">
+    <div class="sub-header-inner">
+      <nav class="breadcrumbs" id="breadcrumbs-bar" aria-label="Breadcrumb">
+        <span class="breadcrumb-current">الرئيسية (Dashboard)</span>
+      </nav>
+      <div class="quick-jump-pills">
+        <span style="font-size:0.78rem; color:var(--text-muted); font-weight:700; margin-left:0.25rem;">انتقال مباشر:</span>
+        <button class="jump-pill" data-jump-lec="1" onclick="window.EBDApp.navigate('lecture-1')">Lec 1: Steps in EBD</button>
+        <button class="jump-pill" data-jump-lec="2" onclick="window.EBDApp.navigate('lecture-2')">Lec 2: Research Question</button>
+        <button class="jump-pill" data-jump-lec="3" onclick="window.EBDApp.navigate('lecture-3')">Lec 3: Statement of Problem</button>
+        <button class="jump-pill" data-jump-lec="4" onclick="window.EBDApp.navigate('lecture-4')">Lec 4: Research Hypothesis</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ DYNAMIC VIEW CONTAINER ══════════ -->
+  <main class="main-container" id="app-main"></main>
+
+  <!-- ══════════ EMBEDDED VIDEO PLAYER MODAL ══════════ -->
+  <div class="modal-backdrop" id="video-modal" onclick="if(event.target === this) window.EBDApp.closeVideoModal()">
+    <div class="modal-window" id="video-modal-body"></div>
+  </div>
+
+  <!-- ══════════ SITE FOOTER ══════════ -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>EBD Advanced Learning Platform 🦷</strong> — Evidence-Based Dentistry Curriculum (Prof. Hadeel Farouk)
+        <div style="margin-top:0.2rem;">
+          إعداد وتطوير المنصة: <strong>Abd-el-Rahman Teba © 2026</strong> · جميع الأسئلة (500 MCQ) مستندة حصريًا إلى ملفات المحاضرات الرسمية.
+        </div>
+      </div>
+      <div style="display:flex; gap:0.85rem; flex-wrap:wrap;">
+        <a href="#home" onclick="window.EBDApp.navigate('home'); return false;">الرئيسية</a>
+        <a href="#course" onclick="window.EBDApp.navigate('course'); return false;">خريطة المنهج</a>
+        <a href="#library" onclick="window.EBDApp.navigate('library'); return false;">مكتبة المصادر</a>
+        <a href="#studio" onclick="window.EBDApp.navigate('studio'); return false;">استوديو الفهم</a>
+        <a href="#mcq" onclick="window.EBDApp.navigate('mcq'); return false;">بنك الـ 500 سؤال</a>
+        <a href="#search" onclick="window.EBDApp.navigate('search'); return false;">البحث الشامل</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════ APPLICATION DATA & ENGINE SCRIPTS ══════════ -->
+  <script src="assets/js/ebd-sources.js"></script>
+  <script src="assets/js/ebd-curriculum.js"></script>
+  <script src="assets/js/ebd-mcq-bank.js"></script>
+  <script src="assets/js/ebd-app.js"></script>
+</body>
+</html>
