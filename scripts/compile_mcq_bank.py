@@ -8,7 +8,19 @@ and writes assets/js/ebd-mcq-bank.js.
 
 import json
 import random
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
+
+# Resolve all paths relative to the repository root (scripts/ -> project root),
+# so the build works identically on any machine / CI (e.g. Vercel) regardless of cwd.
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_ROOT = SCRIPT_DIR.parent
+OUT_PATH = PROJECT_ROOT / "assets" / "js" / "ebd-mcq-bank.js"
+
+# Ensure sibling question modules are importable even if invoked from another cwd.
+if str(SCRIPT_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPT_DIR))
 
 from build_mcq_bank import lec1_items
 from lec2_questions import LEC2_ITEMS
@@ -89,8 +101,9 @@ for lec, data in sorted(coverage_map.items()):
     for st, cnt in data["subtopics"].items():
         print(f"  - {st}: {cnt} Qs")
 
-out_path = "/home/user/webapp/assets/js/ebd-mcq-bank.js"
-with open(out_path, "w", encoding="utf-8") as f:
+out_path = OUT_PATH
+out_path.parent.mkdir(parents=True, exist_ok=True)
+with out_path.open("w", encoding="utf-8") as f:
     f.write("/* ═══════════════════════════════════════════════════════════════════════════\n")
     f.write("   EBD EXAM & MCQ CENTER — 500 VERIFIED UNIVERSITY MCQ BANK\n")
     f.write("   100% Strictly Sourced from Prof. Hadeel Farouk's Lecture PDFs:\n")
